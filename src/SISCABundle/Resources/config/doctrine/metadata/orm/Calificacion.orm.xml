@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Calificacion" table="calificacion">
+    <indexes>
+      <index name="fk_Calificacion_Alumno1_idx" columns="alumno"/>
+      <index name="fk_Calificacion_Unidad1_idx" columns="unidad"/>
+    </indexes>
+    <id name="id" type="integer" column="id"/>
+    <id name="alumno" association-key="true"/>
+    <id name="unidad" association-key="true"/>
+    <field name="asistencia" type="float" column="asistencia" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="saberordinario" type="string" column="saberOrdinario" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hacerordinario" type="string" column="hacerOrdinario" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="serordinario" type="string" column="serOrdinario" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="promedioordinario" type="string" column="promedioOrdinario" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="saberrecupera" type="string" column="saberRecupera" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hacerrecupera" type="string" column="hacerRecupera" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="serrecupera" type="string" column="serRecupera" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="promediorecupera" type="string" column="promedioRecupera" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="saberextra" type="string" column="saberExtra" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hacerextra" type="string" column="hacerExtra" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="serextra" type="string" column="serExtra" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="promedioextra" type="string" column="promedioExtra" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <one-to-one field="unidad" target-entity="Unidad" fetch="LAZY">
+      <join-columns>
+        <join-column name="unidad" referenced-column-name="idUnidad"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="alumno" target-entity="Alumno" fetch="LAZY">
+      <join-columns>
+        <join-column name="alumno" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

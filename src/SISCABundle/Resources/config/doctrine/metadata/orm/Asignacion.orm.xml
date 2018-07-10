@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Asignacion" table="asignacion">
+    <indexes>
+      <index name="fk_asignacionMaterias_maestro_idx" columns="maestro"/>
+      <index name="fk_asignacionMaterias_materia1_idx" columns="materia"/>
+      <index name="fk_asignacionMaterias_grupo1_idx" columns="grupo"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="estado" type="integer" column="estado" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="materia" target-entity="Materia" fetch="LAZY">
+      <join-columns>
+        <join-column name="materia" referenced-column-name="idMateria"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="maestro" target-entity="Maestro" fetch="LAZY">
+      <join-columns>
+        <join-column name="maestro" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="grupo" target-entity="Grupo" fetch="LAZY">
+      <join-columns>
+        <join-column name="grupo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

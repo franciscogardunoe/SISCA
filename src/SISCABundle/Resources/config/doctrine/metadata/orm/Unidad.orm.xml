@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Unidad" table="unidad">
+    <indexes>
+      <index name="fk_Unidad_Materia1" columns="materia"/>
+    </indexes>
+    <id name="idunidad" type="integer" column="idUnidad"/>
+    <id name="materia" association-key="true"/>
+    <field name="nombre" type="string" column="nombre" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estado" type="integer" column="estado" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="numerounidad" type="integer" column="numeroUnidad" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <one-to-one field="materia" target-entity="Materia" fetch="LAZY">
+      <join-columns>
+        <join-column name="materia" referenced-column-name="idMateria"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

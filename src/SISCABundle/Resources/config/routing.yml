@@ -1,0 +1,3 @@
+sisca_homepage:
+    path:     /
+    defaults: { _controller: SISCABundle:Default:index }
